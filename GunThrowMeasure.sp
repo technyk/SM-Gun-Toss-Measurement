@@ -4,6 +4,27 @@
 #define EFL_NO_THINK_FUNCTION (1<<22)
 #define WEAPON_NOT_CARRIED 0
 
+#pragma semicolon 1
+#pragma newdecls required
+
+public Plugin myinfo = 
+{
+	name = "GunThrowMeasure",
+	author = "technyk",
+	description = "A plugin made to measure the distance of gun throws",
+	version = "1.0",
+	url = "https://github.com/technyk"
+};
+
+public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
+{
+	EngineVersion g_engineversion = GetEngineVersion();
+	if (g_engineversion != Engine_CSGO)
+	{
+		SetFailState("This plugin was made for use with Counter-Strike: Global Offensive only.");
+	}
+}
+
 public void OnPluginStart()
 {
 	for (int client = 1; client <= MaxClients; client++) {
